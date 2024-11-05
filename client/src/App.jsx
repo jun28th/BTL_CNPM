@@ -1,26 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
-import axios from "axios";
+import { Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+import Dashboard from "./Dashboard/Dashboard";
+import Navbar from "./Component/Navbar";
+import Footer from "./Component/Footer";
 
 function App() {
-  const [array, setArray] = useState([]);
-
-  const fetchAPI = async () => {
-    const response = await axios.get("http://localhost:8080/api");
-    setArray(response.data.fruits);
-  };
-
-  useEffect(() => {
-    fetchAPI();
-  }, []);
-
   return (
     <>
-      {array.map((fruit, index) => (
-        <div key={index}>
-          <p>{fruit}</p>
-        </div>
-      ))}
+      <Navbar />
+
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+      <Footer />
     </>
   );
 }
