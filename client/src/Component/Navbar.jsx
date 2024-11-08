@@ -1,4 +1,10 @@
+import React, { useEffect, useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <>
       <nav
@@ -16,27 +22,25 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
-
           <div className="col-6">
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
-                <li className="nav-item">
+                <li
+                  className="nav-item"
+                  onClick={() => {
+                    navigate("/dashboard");
+                  }}
+                >
                   <a className="nav-link" href="#">
                     Tổng Quan
                   </a>
                 </li>
-                <li className="nav-item">
+                <li
+                  className="nav-item"
+                  onClick={() => {
+                    navigate("/system");
+                  }}
+                >
                   <a className="nav-link" href="#">
                     Hệ Thống
                   </a>
