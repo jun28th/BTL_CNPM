@@ -2,17 +2,21 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="navbar fixed-top navbar-expand-lg"
+        className="navbar sticky-top navbar-expand-lg"
         style={{ backgroundColor: "#9FCDE8" }}
       >
-        <div className="container-fluid">
-          <div className="container">
-            <a className="navbar-brand" href="#">
+        <div className="container-fluid" style={{ width: "100%" }}>
+          <div className="col">
+            <a
+              className="navbar-brand fs-4 fw-bold"
+              style={{ color: "#3A4163" }}
+              href="#"
+            >
               Smart Printing Service
             </a>
           </div>
 
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -22,41 +26,46 @@ export default function Navbar() {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
 
-          <div className="container ">
+          <div className="col-6">
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    Overview
+                  <a className="nav-link" href="#">
+                    Tổng Quan
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    New Account
+                    Hệ Thống
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    Report
+                    Hiệu Chỉnh Giấy
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    Contact Us
+                    Lịch Sử
                   </a>
                 </li>
                 <li className="nav-item">
-                  <button
-                    className="btn btn text-white"
-                    style={{ backgroundColor: "#3A4163" }}
-                  >
-                    Logout
-                  </button>
+                  <a className="nav-link" href="#">
+                    Liên Hệ
+                  </a>
                 </li>
               </ul>
             </div>
+          </div>
+          <div className="col">
+            <button
+              className="btn btn text-white"
+              style={{ backgroundColor: "#3A4163" }}
+            >
+              Đăng Xuất
+            </button>
           </div>
         </div>
       </nav>

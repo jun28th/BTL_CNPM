@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div
-      className="container-fluid fixed-bottom"
+      className="container-fluid"
       style={{
         backgroundColor: "#3A4163",
         color: "#ffffff",
