@@ -18,9 +18,38 @@ export default function System() {
       status: null,
     },
   ]);
-
+  const [values, setValues] = useState({
+    // id: "2",
+    campus: "",
+    building: "",
+    room: "",
+    status: "",
+  });
   const [filteredData, setFilteredData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      // const res = await AxiosInstance.post(`patients/`, values);
+      console.log(res);
+      if (res.status === 201) {
+        toast.success("Added Success");
+        setValues({
+          campus: "",
+          building: "",
+          room: "",
+          status: "",
+        });
+      } else if (res.status === 400) {
+        toast.error("Please fill full");
+      } else {
+        toast.error("An error occurred");
+      }
+    } catch (res) {
+      console.log(res);
+      toast.error(`${res.error}, Please try again!`);
+    }
+  };
   const handleSearchChange = (searchValue) => {
     setSearchValue(searchValue.trim());
     if (!searchValue.trim()) {
@@ -41,7 +70,7 @@ export default function System() {
       >
         <div
           className="w-100 rounded-4 bg-white border shadow"
-          style={{ minHeight: "300px" }}
+          style={{ minHeight: "550px" }}
         >
           <div className="d-flex justify-content-end align-items-center border-bottom">
             <div className="flex-grow-1 text-center my-3">
@@ -56,7 +85,14 @@ export default function System() {
                 searchData={printer}
               />
             </div>
-            <button className="btn btn-success me-5 "> + New Printer </button>
+            <button
+              className="btn btn-success me-5 "
+              data-bs-toggle="modal"
+              data-bs-target="#AddNewPrinter"
+            >
+              {" "}
+              + New Printer{" "}
+            </button>
           </div>
 
           <div className="m-3">
@@ -87,6 +123,90 @@ export default function System() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+      {/* MODAL CreateTorrent */}
+      <div
+        className="modal fade"
+        id="AddNewPrinter"
+        tabIndex="-1"
+        aria-labelledby="createTorrentModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="createTorrentModalLabel">
+                Create Torrent
+              </h5>
+            </div>
+            <div className="modal-body">
+              <label style={{ fontWeight: "bold" }} htmlFor="nameid">
+                Name:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="nameid"
+                placeholder="Enter name of patient"
+                value={values.name}
+                onChange={(e) => setValues({ ...values, name: e.target.value })}
+              />
+              <div className="row mt-3">
+                <div className="col-6">
+                  <label style={{ fontWeight: "bold" }} htmlFor="dobid">
+                    Date of birth:
+                  </label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="dobid"
+                    placeholder="Enter Date of birth"
+                    value={values.dayofbirth}
+                    onChange={(e) =>
+                      setValues({ ...values, dayofbirth: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="col-6">
+                  <label style={{ fontWeight: "bold" }} htmlFor="genderid">
+                    Gender:
+                  </label>
+                  <select
+                    className="form-control"
+                    value={values.gender}
+                    id="genderid"
+                    onChange={(event) =>
+                      setValues({ ...values, gender: event.target.value })
+                    }
+                  >
+                    <option value="" disabled>
+                      Choose gender
+                    </option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  // onClick={handleCreateTorrent}
+                >
+                  Add Printer
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
