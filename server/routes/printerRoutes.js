@@ -2,8 +2,13 @@ const express = require("express");
 const router = express.Router();
 const printerController = require(`${__dirname}/../controllers/printerController.js`);
 
-router.param("/:id", printerController.checkID);
-
-router.route("/").get(printerController.getAllPrinter);
-
+router
+  .route("/")
+  .get(printerController.getAllPrinter)
+  .post(printerController.createPrinter);
+router
+  .route("/:id")
+  .get(printerController.getPrinter)
+  .patch(printerController.updatePrinter)
+  .delete(printerController.deletePrinter);
 module.exports = router;
