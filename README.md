@@ -42,4 +42,30 @@ Quản lý:
 + Hệ thống có khả năng sửa chữa, nâng cấp và mở rộng.
 
 ## Sử dụng
-Hướng dẫn sử dụng phần mềm/dự án của bạn.
+### Để chạy Backend của hệ thống, thực hiện các bước sau:
+1. Navigate to the frontend directory:
+    ```bash
+    cd server
+    ```
+2. Install Dependencies:
+    ```bash
+    npm i
+    ```
+3. Start the application
+   ```bash
+   npm run start
+
+### Để chạy Frontend của hệ thống, thực hiện các bước sau:
+1. Navigate to the frontend directory:
+    ```bash
+    cd client
+    ```
+2. Install Dependencies:
+    ```bash
+    npm i
+    ```
+3. Start the application
+   ```bash
+   npm run dev
+    
+
