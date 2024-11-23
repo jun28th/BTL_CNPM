@@ -51,9 +51,9 @@ Quản lý:
     ```bash
     npm i
     ```
-3. Start the application
+3. Start the product:
    ```bash
-   npm run start
+   npm run start:prod
 
 ### Để chạy Frontend của hệ thống, thực hiện các bước sau:
 1. Navigate to the frontend directory:
